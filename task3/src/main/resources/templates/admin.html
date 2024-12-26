@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      th:replace="~{layout :: html}">
+<head>
+    <title id="pageTitle">Admin Dashboard</title>
+</head>
+<body>
+<div id="content" class="container">
+    <!-- Welcome Banner -->
+    <div class="row mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Administration Panel</h2>
+                <p class="card-text">
+                    Welcome, <span th:text="${email}">admin@example.com</span>
+                    <span class="badge bg-danger ms-2">Administrator</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- System Statistics -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">User Statistics</h5>
+                    <ul class="list-unstyled">
+                        <li>Total Users:
+                            <span th:text="${totalUsers ?: '0'}">0</span>
+                        </li>
+                        <li>Active Users:
+                            <span th:text="${activeUsers ?: '0'}">0</span>
+                        </li>
+                        <li>New Today:
+                            <span th:text="${newUsers ?: '0'}">0</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Authentication Stats</h5>
+                    <ul class="list-unstyled">
+                        <li>GitHub Users:
+                            <span th:text="${githubUsers ?: '0'}">0</span>
+                        </li>
+                        <li>Login Attempts Today:
+                            <span th:text="${loginAttempts ?: '0'}">0</span>
+                        </li>
+                        <li>Failed Logins:
+                            <span th:text="${failedLogins ?: '0'}">0</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">System Status</h5>
+                    <ul class="list-unstyled">
+                        <li>System Health:
+                            <span class="badge bg-success">Healthy</span>
+                        </li>
+                        <li>Last Backup:
+                            <span th:text="${lastBackup ?: 'Never'}">Never</span>
+                        </li>
+                        <li>Server Uptime:
+                            <span th:text="${uptime ?: 'Unknown'}">Unknown</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Actions -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Administrative Actions</h5>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-primary me-2">
+                            <i class="bi bi-person-plus"></i> Add User
+                        </button>
+                        <button type="button" class="btn btn-info me-2">
+                            <i class="bi bi-gear"></i> System Settings
+                        </button>
+                        <button type="button" class="btn btn-warning me-2">
+                            <i class="bi bi-shield"></i> Security Log
+                        </button>
+                        <button type="button" class="btn btn-danger">
+                            <i class="bi bi-exclamation-triangle"></i> View Alerts
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Recent Activity</h5>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>User</th>
+                                <th>Action</th>
+                                <th>Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <!-- Placeholder rows - would be populated from backend -->
+                            <tr>
+                                <td>Just now</td>
+                                <td>admin@example.com</td>
+                                <td>Logged in</td>
+                                <td><span class="badge bg-success">Success</span></td>
+                            </tr>
+                            <tr>
+                                <td>5 min ago</td>
+                                <td>user@example.com</td>
+                                <td>Profile update</td>
+                                <td><span class="badge bg-success">Success</span></td>
+                            </tr>
+                            <tr>
+                                <td>10 min ago</td>
+                                <td>unknown</td>
+                                <td>Failed login attempt</td>
+                                <td><span class="badge bg-danger">Failed</span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

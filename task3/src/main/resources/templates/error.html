@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: html}">
+<head>
+    <title id="pageTitle">Error</title>
+</head>
+<body>
+<div id="content" class="error-container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-danger">
+                <div class="card-body text-center">
+                    <h2 class="card-title text-danger mb-4">
+                        <i class="bi bi-exclamation-triangle"></i>
+                        Error
+                    </h2>
+
+                    <!-- Error message -->
+                    <div class="alert alert-danger" role="alert">
+                        <p class="mb-0" th:text="${errorMessage}">An error occurred</p>
+                        <p class="mb-0" th:if="${status}" th:text="'Status code: ' + ${status}">Status code: 500</p>
+                    </div>
+
+                    <!-- Helpful information -->
+                    <div class="mt-4">
+                        <h5>What might have happened?</h5>
+                        <ul class="list-unstyled text-start">
+                            <li th:if="${status == 401}">• Your session may have expired</li>
+                            <li th:if="${status == 403}">• You don't have permission to access this resource</li>
+                            <li th:if="${status == 404}">• The requested page doesn't exist</li>
+                            <li th:if="${status == 500}">• There was an internal server error</li>
+                            <li>• There might be a temporary system issue</li>
+                        </ul>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="mt-4">
+                        <h5>What can you do?</h5>
+                        <div class="d-grid gap-2">
+                            <a href="/" class="btn btn-primary">
+                                <i class="bi bi-house"></i> Return to Home
+                            </a>
+                            <a href="/login" class="btn btn-outline-primary">
+                                <i class="bi bi-box-arrow-in-right"></i> Try Logging In Again
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Support information -->
+                    <div class="mt-4 text-muted">
+                        <small>
+                            If the problem persists, please contact support and provide the error details above.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

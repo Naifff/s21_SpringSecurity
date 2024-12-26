@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: html}">
+<head>
+    <title id="pageTitle">User Profile</title>
+</head>
+<body>
+<div id="content" class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <div class="text-center mb-4">
+                    <img th:if="${avatar}"
+                         th:src="${avatar}"
+                         class="rounded-circle mb-3"
+                         style="width: 150px; height: 150px;"
+                         alt="Profile picture">
+                    <h2 class="card-title" th:text="${name}">User Name</h2>
+                    <p class="text-muted" th:text="${email}">user@example.com</p>
+                </div>
+
+                <hr>
+
+                <!-- User Details -->
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h5>Account Information</h5>
+                        <ul class="list-unstyled">
+                            <li><strong>Email:</strong> <span th:text="${email}">email@example.com</span></li>
+                            <li><strong>Name:</strong> <span th:text="${name}">User Name</span></li>
+                            <li><strong>Authentication:</strong> Google OAuth2</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>Access Level</h5>
+                        <ul class="list-unstyled">
+                            <li th:each="authority : ${#authentication.authorities}"
+                                th:text="${authority.authority}">ROLE_USER
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Account Actions -->
+                <div class="text-center mt-4">
+                    <form th:action="@{/logout}" method="post" class="d-inline">
+                        <button type="submit" class="btn btn-danger">
+                            Sign Out
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Access History -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Security Information</h5>
+                <p class="card-text">
+                    Your session is secured using OAuth2 authentication.
+                    Remember to always sign out when using shared devices.
+                </p>
+
+                <div class="alert alert-info" role="alert">
+                    <i class="bi bi-info-circle"></i>
+                    Your data is protected and only accessible through secure authentication.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

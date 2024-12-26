@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: html}">
+<head>
+    <title id="pageTitle">Login</title>
+</head>
+<body>
+<div id="content" class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body text-center">
+                <h2 class="card-title mb-4">Sign In</h2>
+
+                <!-- OAuth2 login options -->
+                <div class="login-providers">
+                    <p class="text-muted mb-4">Choose your login method:</p>
+
+                    <!-- Google login button -->
+                    <a th:href="@{/oauth2/authorization/google}" class="btn btn-outline-dark btn-lg mb-3 w-100">
+                        <img src="https://www.google.com/favicon.ico" alt="Google" width="20" height="20" class="me-2">
+                        Continue with Google
+                    </a>
+
+                    <!-- Information about authentication -->
+                    <div class="mt-4">
+                        <small class="text-muted">
+                            By signing in, you agree to our Terms of Service and Privacy Policy.
+                            We use secure OAuth2 authentication to protect your data.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Help section -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Need Help?</h5>
+                <p class="card-text">
+                    If you're having trouble signing in, make sure you:
+                </p>
+                <ul class="list-unstyled">
+                    <li>✓ Have an active Google account</li>
+                    <li>✓ Have enabled popup windows for this site</li>
+                    <li>✓ Have a stable internet connection</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
